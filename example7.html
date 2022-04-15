@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script> <!-- 객체 -->
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script> <!-- 객체 -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <!--
+        input box : userid , userpw 
+
+        const userid = document.querySelector('#userid')
+        const userpw = document.querySelector('#userpw')
+
+        값이 바뀌거나 뭔가 글자숫자적거나 xxx@xxx.com
+        userid이벤트 검 
+    -->
+    <script type="text/babel">
+        class Login extends React.Component{
+            // 데이터가 바뀌면 화면이바뀐다.
+            // 변수명을 절대 바꾸면안된다. 
+            state = {
+                islogin:false
+            }
+
+            // state.name = 'ingoo2'
+            // {} === {} // false
+            // const a = state
+            // state.name = 'ingoo2'
+            // a === state // true 
+
+            // state.name = 'ingoo2'           
+            // this.setState()  // state 라는 변수를 바꿔주는 함수에요.
+            
+            // class 
+
+            render(){
+                const obj = {
+                    ...this.state,
+                    isLogin:!this.state.isLogin
+                }
+                return(
+                    <button onClick={ ()=>{ this.setState(obj) } }>
+                        {this.state.isLogin ? '로그아웃' : '로그인'}
+                    </button>
+                )
+            }
+        }
+
+        class App extends React.Component{
+            render(){
+                return(
+                    <div>
+                        <Login />
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(
+            <App />,
+            document.querySelector('#root')
+        )
+    </script>
+
+
+</body>
+</html>
